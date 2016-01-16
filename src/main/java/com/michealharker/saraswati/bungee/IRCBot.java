@@ -40,7 +40,7 @@ public class IRCBot extends PircBot implements Runnable {
 		
 		this.channels = this.plugin.getConfig().getStringList("bot.channels");
 		
-		for(String c : this.channels) {this.plugin.getLogger().info(c);
+		for(String c : this.channels) {
 			this.joinChannel(c);
 		}
 	}
@@ -56,8 +56,9 @@ public class IRCBot extends PircBot implements Runnable {
 		}
 	}
 	
-	protected void onMessage(String channel, String sender, String hostname, String message) {
-		if (message.equalsIgnoreCase(this.plugin.getConfig().getString("prefix") + "p")) {
+	public void onMessage(String channel, String sender, String login, String hostname, String message) {
+		this.plugin.getLogger().info(message);
+		if (message.equalsIgnoreCase(this.plugin.getConfig().getString("bot.prefix") + "p")) {
 			if (this.plugin.getProxy().getOnlineCount() > 0) {
 				String names = "";
 				Collection<ProxiedPlayer> p = this.plugin.getProxy().getPlayers();
@@ -75,25 +76,25 @@ public class IRCBot extends PircBot implements Runnable {
 	}
 
 	private String ircColorify(String message) {
-		message = message.replace("Â§0", Colors.NORMAL);
-		message = message.replace("Â§1", Colors.DARK_BLUE);
-		message = message.replace("Â§2", Colors.DARK_GREEN);
-		message = message.replace("Â§3", Colors.CYAN);
-		message = message.replace("Â§4", Colors.RED);
-		message = message.replace("Â§5", Colors.PURPLE);
-		message = message.replace("Â§6", Colors.OLIVE);
-		message = message.replace("Â§7", Colors.LIGHT_GRAY);
-		message = message.replace("Â§8", Colors.DARK_GRAY);
-		message = message.replace("Â§9", Colors.BLUE);
-		message = message.replace("Â§a", Colors.GREEN);
-		message = message.replace("Â§b", Colors.CYAN);
-		message = message.replace("Â§c", Colors.RED);
-		message = message.replace("Â§d", Colors.MAGENTA);
-		message = message.replace("Â§e", Colors.YELLOW);
-		message = message.replace("Â§f", Colors.NORMAL);
-		message = message.replace("Â§l", Colors.BOLD);
-		message = message.replace("Â§n", Colors.UNDERLINE);
-		message = message.replace("Â§r", Colors.NORMAL);
+		message = message.replace("§0", Colors.NORMAL);
+		message = message.replace("§1", Colors.DARK_BLUE);
+		message = message.replace("§2", Colors.DARK_GREEN);
+		message = message.replace("§3", Colors.CYAN);
+		message = message.replace("§4", Colors.RED);
+		message = message.replace("§5", Colors.PURPLE);
+		message = message.replace("§6", Colors.OLIVE);
+		message = message.replace("§7", Colors.LIGHT_GRAY);
+		message = message.replace("§8", Colors.DARK_GRAY);
+		message = message.replace("§9", Colors.BLUE);
+		message = message.replace("§a", Colors.GREEN);
+		message = message.replace("§b", Colors.CYAN);
+		message = message.replace("§c", Colors.RED);
+		message = message.replace("§d", Colors.MAGENTA);
+		message = message.replace("§e", Colors.YELLOW);
+		message = message.replace("§f", Colors.NORMAL);
+		message = message.replace("§l", Colors.BOLD);
+		message = message.replace("§n", Colors.UNDERLINE);
+		message = message.replace("§r", Colors.NORMAL);
 		
 		return message;
 	}

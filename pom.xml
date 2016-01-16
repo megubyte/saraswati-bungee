@@ -29,13 +29,6 @@
             <goals>
               <goal>shade</goal>
             </goals>
-            <configuration>
-              <artifactSet>
-                <includes>
-                  <include>pircbot</include>
-                </includes>
-              </artifactSet>
-            </configuration>
           </execution>
         </executions>
      </plugin>

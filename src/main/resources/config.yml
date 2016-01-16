@@ -6,5 +6,6 @@ bot:
   nick: relay-dev
   host: chat.freenode.net
   port: 6667
+  prefix: '&'
   channels:
    - '##shadowempire-dev'

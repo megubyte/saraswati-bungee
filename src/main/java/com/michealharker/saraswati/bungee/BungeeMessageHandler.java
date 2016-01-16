@@ -19,7 +19,7 @@ public class BungeeMessageHandler implements Listener {
 	
 	@EventHandler
 	public void onPluginMessage(PluginMessageEvent e) throws IOException {
-		if (!e.getTag().equals("BundgeeCord")) return;
+		if (!e.getTag().equals("BungeeCord")) return;
 		
 		DataInputStream in = new DataInputStream(new ByteArrayInputStream(e.getData()));
 		
