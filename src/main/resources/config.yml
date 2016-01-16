@@ -1,0 +1,3 @@
+connect-message: "{player} joined"
+disconnect-message: "{player} left"
+switch-message: "{player} {oldserver} \u00BB {newserver}"
