@@ -29,9 +29,9 @@ public class IRCBot extends PircBot implements Runnable {
 		try {
 			this.plugin.getLogger().info("Connecting to IRC");
 			this.setName(nick);
+			this.setLogin("saraswati");
 			this.setEncoding("UTF8");
 			this.connect(host, port);
-			this.identify("saraswati");
 			this.plugin.getLogger().info("Connected to IRC");
 		} catch (IrcException | IOException ex) {
 			this.plugin.getLogger().warning("Failed to connect to IRC:");
@@ -40,7 +40,7 @@ public class IRCBot extends PircBot implements Runnable {
 		
 		this.channels = this.plugin.getConfig().getStringList("bot.channels");
 		
-		for(String c : this.channels) {
+		for(String c : this.channels) {this.plugin.getLogger().info(c);
 			this.joinChannel(c);
 		}
 	}

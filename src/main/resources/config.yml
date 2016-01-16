@@ -1,3 +1,10 @@
 connect-message: "&e{player} joined the game"
 disconnect-message: "&e{player} left the game"
 switch-message: "{player} {oldserver} \u00BB {newserver}"
+
+bot:
+  nick: relay-dev
+  host: chat.freenode.net
+  port: 6667
+  channels:
+   - '##shadowempire-dev'
