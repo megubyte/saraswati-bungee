@@ -23,6 +23,10 @@ public class BungeePlugin extends Plugin {
 	public void onDisable() {
 		
 	}
+	
+	public IRCBot getIRC() {
+		return this.irc;
+	}
 
 	public Configuration getConfig() {
 		File f = new File(this.getDataFolder(), "");
