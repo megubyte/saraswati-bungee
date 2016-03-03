@@ -27,5 +27,6 @@ public class LogoutEvent implements Listener {
         BungeeMessage bm = new BungeeMessage(e.getPlayer().getUniqueId(), disconnect, BungeeMessageType.PLAYER_QUIT, null);
 
         this.plugin.getIRC().relay(bm);
+        this.plugin.sendPluginMessage(bm);
     }
 }

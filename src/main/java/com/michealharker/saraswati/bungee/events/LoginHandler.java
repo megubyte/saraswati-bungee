@@ -27,5 +27,6 @@ public class LoginHandler implements Listener {
         BungeeMessage bm = new BungeeMessage(e.getPlayer().getUniqueId(), connect, BungeeMessageType.PLAYER_JOIN, null);
 
         this.plugin.getIRC().relay(bm);
+        this.plugin.sendPluginMessage(bm);
     }
 }

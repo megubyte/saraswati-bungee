@@ -32,6 +32,7 @@ public class ServerSwapHandler implements Listener {
             BungeeMessage bm = new BungeeMessage(e.getPlayer().getUniqueId(), msg, BungeeMessageType.MISC, null);
 
             this.plugin.getIRC().relay(bm);
+            this.plugin.sendPluginMessage(bm);
         }
     }
 }
