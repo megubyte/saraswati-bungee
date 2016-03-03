@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c8f52a6-648a-4dfa-8439-65a527f50fb6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/michealharker/saraswati/bungee/IRCBot.java" afterPath="$PROJECT_DIR$/src/main/java/com/michealharker/saraswati/bungee/IRCBot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/config.yml" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/michealharker/saraswati/bungee/events/ServerSwapHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/michealharker/saraswati/bungee/events/ServerSwapHandler.java" />
     </list>
     <ignored path="saraswati-bungee.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,10 +24,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="IRCBot.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="IRCBot.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/michealharker/saraswati/bungee/IRCBot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36017898">
+            <state vertical-scroll-proportion="-11.5">
               <caret line="82" column="31" selection-start-line="82" selection-start-column="31" selection-end-line="82" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="false" />
@@ -69,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ServerSwapHandler.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ServerSwapHandler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/michealharker/saraswati/bungee/events/ServerSwapHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="34" column="46" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.5965293">
+              <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -134,9 +133,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/michealharker/saraswati/bungee/BungeePlugin.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/michealharker/saraswati/bungee/events/LoginHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/michealharker/saraswati/bungee/events/LogoutEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/michealharker/saraswati/bungee/events/ServerSwapHandler.java" />
         <option value="$PROJECT_DIR$/src/main/resources/config.yml" />
         <option value="$PROJECT_DIR$/src/main/java/com/michealharker/saraswati/bungee/IRCBot.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/michealharker/saraswati/bungee/events/ServerSwapHandler.java" />
       </list>
     </option>
   </component>
@@ -839,14 +838,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/michealharker/saraswati/bungee/events/ServerSwapHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="46" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -857,11 +848,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/michealharker/saraswati/bungee/IRCBot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36017898">
+        <state vertical-scroll-proportion="-11.5">
           <caret line="82" column="31" selection-start-line="82" selection-start-column="31" selection-end-line="82" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/michealharker/saraswati/bungee/events/ServerSwapHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5965293">
+          <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>

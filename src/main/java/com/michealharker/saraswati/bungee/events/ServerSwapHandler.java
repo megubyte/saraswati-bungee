@@ -19,6 +19,11 @@ public class ServerSwapHandler implements Listener {
     @EventHandler
     public void onServerSwitch(ServerConnectEvent e) {
         if (e.getPlayer().getServer() != null) {
+            if (e.getPlayer().getServer().getInfo().getName().equals(e.getTarget().getName())) {
+                // No.
+                return;
+            }
+            
             String msg = this.plugin.getConfig().getString("switch-message");
 
             // String replacements!
