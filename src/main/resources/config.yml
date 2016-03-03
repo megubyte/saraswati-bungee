@@ -1,6 +1,11 @@
 connect-message: "&e{player} joined the game"
 disconnect-message: "&e{player} left the game"
 switch-message: "{player} {oldserver} \u00BB {newserver}"
+irc-relay:
+  message: "&7[IRC]&r <{nick}> {message}"
+  join: "&7[IRC]&r {nick} has joined {channel}"
+  part: "&7[IRC]&r {nick} has left {channel}"
+  quit: "&7[IRC]&r {nick} has quit"
 
 bot:
   nick: relay-dev

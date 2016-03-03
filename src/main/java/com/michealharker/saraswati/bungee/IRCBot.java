@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 
+import com.michealharker.saraswati.messages.BungeeMessageType;
+import net.md_5.bungee.api.ChatColor;
 import org.jibble.pircbot.Colors;
 import org.jibble.pircbot.IrcException;
 import org.jibble.pircbot.PircBot;
@@ -57,7 +59,6 @@ public class IRCBot extends PircBot implements Runnable {
 	}
 	
 	public void onMessage(String channel, String sender, String login, String hostname, String message) {
-		this.plugin.getLogger().info(message);
 		if (message.equalsIgnoreCase(this.plugin.getConfig().getString("bot.prefix") + "p")) {
 			if (this.plugin.getProxy().getOnlineCount() > 0) {
 				String names = "";
@@ -73,6 +74,17 @@ public class IRCBot extends PircBot implements Runnable {
 				this.sendMessage(channel, "There's nobody online right now.");
 			}
 		}
+
+		String ircmsg = this.plugin.getConfig().getString("irc-relay.message");
+
+		ircmsg = ircmsg.replace("{nick}", sender);
+		ircmsg = ircmsg.replace("{message}", message);
+		ircmsg = ircmsg.replace("{channel}", channel);
+
+		ircmsg = ChatColor.translateAlternateColorCodes('&', ircmsg);
+
+		BungeeMessage bm = new BungeeMessage(null, ircmsg, BungeeMessageType.IRC_MESSAGE, null);
+		this.plugin.sendPluginMessage(bm);
 	}
 
 	private String ircColorify(String message) {
