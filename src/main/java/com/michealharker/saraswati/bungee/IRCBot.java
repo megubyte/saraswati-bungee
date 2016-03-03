@@ -57,8 +57,35 @@ public class IRCBot extends PircBot implements Runnable {
 			this.sendMessage(c, msg);
 		}
 	}
-	
-	public void onMessage(String channel, String sender, String login, String hostname, String message) {
+
+	@Override
+	protected void onJoin(String channel, String sender, String login, String hostname) {
+		String ircmsg = this.plugin.getConfig().getString("irc-relay.join");
+
+		ircmsg = ChatColor.translateAlternateColorCodes('&', ircmsg);
+
+		ircmsg = ircmsg.replace("{nick}", sender);
+		ircmsg = ircmsg.replace("{channel}", channel);
+
+		BungeeMessage bm = new BungeeMessage(null, ircmsg, BungeeMessageType.IRC_MESSAGE, null);
+		this.plugin.sendPluginMessage(bm);
+	}
+
+	@Override
+	protected void onPart(String channel, String sender, String login, String hostname) {
+		String ircmsg = this.plugin.getConfig().getString("irc-relay.part");
+
+		ircmsg = ChatColor.translateAlternateColorCodes('&', ircmsg);
+
+		ircmsg = ircmsg.replace("{nick}", sender);
+		ircmsg = ircmsg.replace("{channel}", channel);
+
+		BungeeMessage bm = new BungeeMessage(null, ircmsg, BungeeMessageType.IRC_MESSAGE, null);
+		this.plugin.sendPluginMessage(bm);
+	}
+
+	@Override
+	protected void onMessage(String channel, String sender, String login, String hostname, String message) {
 		if (message.equalsIgnoreCase(this.plugin.getConfig().getString("bot.prefix") + "p")) {
 			if (this.plugin.getProxy().getOnlineCount() > 0) {
 				String names = "";
@@ -77,11 +104,11 @@ public class IRCBot extends PircBot implements Runnable {
 
 		String ircmsg = this.plugin.getConfig().getString("irc-relay.message");
 
+		ircmsg = ChatColor.translateAlternateColorCodes('&', ircmsg);
+
 		ircmsg = ircmsg.replace("{nick}", sender);
 		ircmsg = ircmsg.replace("{message}", message);
 		ircmsg = ircmsg.replace("{channel}", channel);
-
-		ircmsg = ChatColor.translateAlternateColorCodes('&', ircmsg);
 
 		BungeeMessage bm = new BungeeMessage(null, ircmsg, BungeeMessageType.IRC_MESSAGE, null);
 		this.plugin.sendPluginMessage(bm);
