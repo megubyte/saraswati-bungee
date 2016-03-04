@@ -96,6 +96,19 @@ public class IRCBot extends PircBot implements Runnable {
 	}
 
 	@Override
+	protected void onAction(String sender, String login, String hostname, String target, String action) {
+		String ircmsg = this.plugin.getConfig().getString("irc-relay.me");
+
+		ircmsg = ChatColor.translateAlternateColorCodes('&', ircmsg);
+
+		ircmsg = ircmsg.replace("{nick}", sender);
+		ircmsg = ircmsg.replace("{action}", action);
+
+		BungeeMessage bm = new BungeeMessage(null, ircmsg, BungeeMessageType.IRC_MESSAGE, null);
+		this.plugin.sendPluginMessage(bm);
+	}
+
+	@Override
 	protected void onQuit(String sender, String login, String hostname, String reason) {
 		String ircmsg = this.plugin.getConfig().getString("irc-relay.quit");
 

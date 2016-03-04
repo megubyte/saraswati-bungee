@@ -3,6 +3,7 @@ disconnect-message: "&e{player} left the game"
 switch-message: "{player} {oldserver} \u00BB {newserver}"
 irc-relay:
   message: "&8[IRC]&r <{nick}> {message}"
+  me: "&8[IRC]&r &9* &7{nick}&r {action}"
   join: "&8[IRC]&r &7{nick}&r has joined &7{channel}"
   part: "&8[IRC]&r &7{nick}&r has left &7{channel}"
   quit: "&8[IRC]&r &7{nick}&r has quit"
