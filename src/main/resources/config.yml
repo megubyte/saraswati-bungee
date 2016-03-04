@@ -6,6 +6,7 @@ irc-relay:
   join: "&8[IRC]&r &7{nick}&r has joined &7{channel}"
   part: "&8[IRC]&r &7{nick}&r has left &7{channel}"
   quit: "&8[IRC]&r &7{nick}&r has quit"
+  kick: "&8[IRC]&r &7{nick}&r has kicked &7{victim}&r from &7{channel}&r({reason})"
 
 bot:
   nick: relay-dev

@@ -23,7 +23,7 @@ public class ServerSwapHandler implements Listener {
                 // No.
                 return;
             }
-            
+
             String msg = this.plugin.getConfig().getString("switch-message");
 
             // String replacements!

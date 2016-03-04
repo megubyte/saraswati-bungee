@@ -1,6 +1,7 @@
 package com.michealharker.saraswati.bungee;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -17,9 +18,13 @@ import net.md_5.bungee.api.connection.ProxiedPlayer;
 public class IRCBot extends PircBot implements Runnable {
 	private BungeePlugin plugin;
 	private List<String> channels;
+	private List<String> moderated;
 
 	public IRCBot(BungeePlugin plugin) {
 		this.plugin = plugin;
+
+		this.channels = new ArrayList<String>();
+		this.moderated = new ArrayList<String>();
 	}
 
 	@Override
@@ -34,6 +39,7 @@ public class IRCBot extends PircBot implements Runnable {
 			this.setLogin("saraswati");
 			this.setEncoding("UTF8");
 			this.connect(host, port);
+			this.setAutoNickChange(true);
 			this.plugin.getLogger().info("Connected to IRC");
 		} catch (IrcException | IOException ex) {
 			this.plugin.getLogger().warning("Failed to connect to IRC:");
@@ -54,8 +60,52 @@ public class IRCBot extends PircBot implements Runnable {
 	public void relay(BungeeMessage message) {
 		for (String c : this.channels) {
 			String msg = this.ircColorify(message.message);
-			this.sendMessage(c, msg);
+			if (!this.moderated.contains(c)) {
+				this.sendMessage(c, msg);
+			}
 		}
+	}
+
+	@Override
+	protected void onSetModerated(String channel, String sender, String login, String hostname) {
+		BungeeMessage bm = new BungeeMessage(null, "", BungeeMessageType.MODERATED, true);
+		this.plugin.sendPluginMessage(bm);
+		this.moderated.add(channel);
+	}
+
+	@Override
+	protected void onRemoveModerated(String channel, String sender, String login, String hostname) {
+		BungeeMessage bm = new BungeeMessage(null, "", BungeeMessageType.MODERATED, false);
+		this.plugin.sendPluginMessage(bm);
+		this.moderated.remove(channel);
+	}
+
+	@Override
+	protected void onKick(String channel, String opsender, String oploin, String ophostname, String victim, String reason) {
+		String ircmsg = this.plugin.getConfig().getString("irc-relay.kick");
+
+		ircmsg = ChatColor.translateAlternateColorCodes('&', ircmsg);
+
+		ircmsg = ircmsg.replace("{channel}", channel);
+		ircmsg = ircmsg.replace("{nick}", opsender);
+		ircmsg = ircmsg.replace("{victim}", victim);
+		ircmsg = ircmsg.replace("{reason}", reason);
+
+		BungeeMessage bm = new BungeeMessage(null, ircmsg, BungeeMessageType.IRC_KICK, null);
+		this.plugin.sendPluginMessage(bm);
+	}
+
+	@Override
+	protected void onQuit(String sender, String login, String hostname, String reason) {
+		String ircmsg = this.plugin.getConfig().getString("irc-relay.quit");
+
+		ircmsg = ChatColor.translateAlternateColorCodes('&', ircmsg);
+
+		ircmsg = ircmsg.replace("{nick}", sender);
+		ircmsg = ircmsg.replace("{reason}", reason);
+
+		BungeeMessage bm = new BungeeMessage(null, ircmsg, BungeeMessageType.IRC_QUIT, null);
+		this.plugin.sendPluginMessage(bm);
 	}
 
 	@Override
