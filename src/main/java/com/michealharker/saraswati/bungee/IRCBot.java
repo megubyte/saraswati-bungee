@@ -31,7 +31,7 @@ public class IRCBot extends PircBot implements Runnable {
 	public void run() {
 		String nick = this.plugin.getConfig().getString("bot.nick", "saraswati");
 		String host = this.plugin.getConfig().getString("bot.host", "irc.freenode.net");
-		int port = this.plugin.getConfig().getInt("bot.port", 6697);
+		int port = this.plugin.getConfig().getInt("bot.port", 6667);
 		
 		try {
 			this.plugin.getLogger().info("Connecting to IRC");
