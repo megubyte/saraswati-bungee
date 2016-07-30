@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import com.michealharker.saraswati.bungee.events.LoginHandler;
 import com.michealharker.saraswati.bungee.events.LogoutEvent;
 import com.michealharker.saraswati.bungee.events.ServerSwapHandler;
+import com.michealharker.saraswati.irc.SaraswatiIRC;
 import com.michealharker.saraswati.messages.BungeeMessage;
 import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
@@ -18,10 +19,10 @@ import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;
 
 public class BungeePlugin extends Plugin {
-	private IRCBot irc;
+	private SaraswatiIRC irc;
 
 	public void onEnable() {
-		this.irc = new IRCBot(this);
+		this.irc = SaraswatiIRC.makeFromPlugin(this);
 		this.irc.run();
 		
 		this.getProxy().getPluginManager().registerListener(this, new BungeeMessageHandler(this));
@@ -42,7 +43,7 @@ public class BungeePlugin extends Plugin {
 		}
 	}
 	
-	public IRCBot getIRC() {
+	public SaraswatiIRC getIRC() {
 		return this.irc;
 	}
 

@@ -14,5 +14,7 @@ bot:
   host: chat.freenode.net
   port: 6667
   prefix: '&'
+  ssl: true
+  servpassword: ''
   channels:
    - '##shadowempire-dev'
