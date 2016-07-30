@@ -22,6 +22,8 @@ final class IRCThread extends Thread {
 		this.bot = genericIRCBot;
 	}
 
+	private static final String ACT_START = "\u0001ACTION ";
+
 	@Override
 	public void run() {
 		while (this.bot.isConnecting()) {
@@ -71,8 +73,8 @@ final class IRCThread extends Thread {
 							String msg = parts[3].substring(1);
 							if (chan == null || nick == null || msg == null)
 								throw new FormatFieldNotFoundException(line);
-							if (msg.charAt(0) == '\u0001') {
-								final @Nullable String action = msg.substring(1, msg.length() - 1);
+							if (msg.startsWith(ACT_START)) {
+								final @Nullable String action = msg.substring(ACT_START.length(), msg.length() - 1);
 								if (action != null)
 									this.bot.onAction(chan, nick, action);
 							} else {
