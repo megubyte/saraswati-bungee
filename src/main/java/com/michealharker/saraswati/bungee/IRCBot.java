@@ -172,9 +172,35 @@ public class IRCBot extends PircBot implements Runnable {
 		ircmsg = ircmsg.replace("{nick}", sender);
 		ircmsg = ircmsg.replace("{message}", message);
 		ircmsg = ircmsg.replace("{channel}", channel);
+		ircmsg = this.minecraftColorify(ircmsg);
 
 		BungeeMessage bm = new BungeeMessage(null, ircmsg, BungeeMessageType.IRC_MESSAGE, null);
 		this.plugin.sendPluginMessage(bm);
+	}
+
+	private String minecraftColorify(String message) {
+		message = message.replace(Colors.BLACK, "§0");
+		message = message.replace(Colors.BLUE, "§9");
+		message = message.replace(Colors.BROWN, "§6");
+		message = message.replace(Colors.CYAN, "§3");
+		message = message.replace(Colors.DARK_BLUE, "§1");
+		message = message.replace(Colors.DARK_GRAY, "§8");
+		message = message.replace(Colors.DARK_GREEN, "§2");
+		message = message.replace(Colors.GREEN, "§a");
+		message = message.replace(Colors.LIGHT_GRAY, "§7");
+		message = message.replace(Colors.MAGENTA, "§d");
+		message = message.replace(Colors.OLIVE, "§6");
+		message = message.replace(Colors.PURPLE, "§5");
+		message = message.replace(Colors.RED, "§4");
+		message = message.replace(Colors.TEAL, "§3");
+		message = message.replace(Colors.WHITE, "§r");
+		message = message.replace(Colors.YELLOW, "§e");
+
+		message = message.replace(Colors.BOLD, "§l");
+		message = message.replace(Colors.UNDERLINE, "§n");
+		message = message.replace(Colors.NORMAL, "§r");
+
+		return message;
 	}
 
 	private String ircColorify(String message) {
